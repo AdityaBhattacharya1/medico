@@ -1,0 +1,44 @@
+{
+  "kind": "collectionType",
+  "collectionName": "doctors",
+  "info": {
+    "singularName": "doctor",
+    "pluralName": "doctors",
+    "displayName": "Doctor"
+  },
+  "options": {
+    "draftAndPublish": true
+  },
+  "pluginOptions": {},
+  "attributes": {
+    "Name": {
+      "type": "string",
+      "required": true
+    },
+    "Address": {
+      "type": "string",
+      "required": true
+    },
+    "Patients": {
+      "type": "string"
+    },
+    "YearsOfExperience": {
+      "type": "string"
+    },
+    "StartTime": {
+      "type": "datetime"
+    },
+    "EndTime": {
+      "type": "datetime"
+    },
+    "About": {
+      "type": "richtext"
+    },
+    "categories": {
+      "type": "relation",
+      "relation": "oneToOne",
+      "target": "api::category.category",
+      "inversedBy": "doctor"
+    }
+  }
+}

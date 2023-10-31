@@ -1,20 +1,60 @@
-import { StatusBar } from 'expo-status-bar';
-import { StyleSheet, Text, View } from 'react-native';
+import { StyleSheet, SafeAreaView } from 'react-native'
+import Login from './app/screens/Login'
+import { ClerkProvider, SignedIn, SignedOut } from '@clerk/clerk-expo'
+import * as SecureStore from 'expo-secure-store'
+import { NavigationContainer } from '@react-navigation/native'
+import TabNavigation from './app/navigations/TabNavigation'
+import { useFonts } from 'expo-font'
+
+const tokenCache = {
+	async getToken(key) {
+		try {
+			return SecureStore.getItemAsync(key)
+		} catch (err) {
+			return null
+		}
+	},
+	async saveToken(key, value) {
+		try {
+			return SecureStore.setItemAsync(key, value)
+		} catch (err) {
+			return
+		}
+	},
+}
 
 export default function App() {
-  return (
-    <View style={styles.container}>
-      <Text>Open up App.js to start working on your app!</Text>
-      <StatusBar style="auto" />
-    </View>
-  );
+	const [fontsLoaded] = useFonts({
+		'Roboto-Regular': require('./assets/fonts/Roboto-Regular.ttf'),
+		'Roboto-Light': require('./assets/fonts/Roboto-Light.ttf'),
+		'Roboto-Medium': require('./assets/fonts/Roboto-Medium.ttf'),
+		'Roboto-Bold': require('./assets/fonts/Roboto-Bold.ttf'),
+	})
+
+	if (!fontsLoaded) return null
+
+	return (
+		<ClerkProvider
+			tokenCache={tokenCache}
+			publishableKey="pk_test_ZXhvdGljLWd1cHB5LTI5LmNsZXJrLmFjY291bnRzLmRldiQ"
+		>
+			<SafeAreaView style={styles.container}>
+				<SignedIn>
+					<NavigationContainer>
+						<TabNavigation />
+					</NavigationContainer>
+				</SignedIn>
+				<SignedOut>
+					<Login />
+				</SignedOut>
+			</SafeAreaView>
+		</ClerkProvider>
+	)
 }
 
 const styles = StyleSheet.create({
-  container: {
-    flex: 1,
-    backgroundColor: '#fff',
-    alignItems: 'center',
-    justifyContent: 'center',
-  },
-});
+	container: {
+		flex: 1,
+		backgroundColor: '#fff',
+	},
+})
