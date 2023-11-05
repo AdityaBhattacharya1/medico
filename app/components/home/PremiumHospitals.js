@@ -1,11 +1,13 @@
-import { View, FlatList } from 'react-native'
+import { View, FlatList, TouchableOpacity } from 'react-native'
 import React, { useEffect, useState } from 'react'
 import SubHeading from './SubHeading'
 import globalAPI from '../../services/globalAPI'
 import HospitalItem from './HospitalItem'
+import { useNavigation } from '@react-navigation/native'
 
 export default function PremiumHospitals() {
 	const [hospitalList, setHospitalList] = useState([])
+	const navigation = useNavigation()
 	const getPremiumHospitals = () =>
 		globalAPI
 			.getPremiumHospitals()
@@ -26,7 +28,15 @@ export default function PremiumHospitals() {
 					showsHorizontalScrollIndicator={false}
 					horizontal={true}
 					renderItem={({ item, index }) => (
-						<HospitalItem hospital={item} />
+						<TouchableOpacity
+							onPress={() =>
+								navigation.navigate('Hospital_Detail', {
+									hospital: item,
+								})
+							}
+						>
+							<HospitalItem hospital={item} />
+						</TouchableOpacity>
 					)}
 				/>
 			</View>

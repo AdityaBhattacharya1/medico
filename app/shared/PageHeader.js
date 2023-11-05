@@ -12,7 +12,7 @@ export default function PageHeader({ title }) {
 				flexDirection: 'row',
 				gap: 15,
 				alignItems: 'center',
-				marginTop: 10,
+				marginTop: 25,
 			}}
 		>
 			<TouchableOpacity onPress={() => navigation.goBack()}>

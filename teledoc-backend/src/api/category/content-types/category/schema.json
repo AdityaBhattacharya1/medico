@@ -32,9 +32,9 @@
       "target": "api::hospital.hospital",
       "inversedBy": "categories"
     },
-    "doctor": {
+    "doctors": {
       "type": "relation",
-      "relation": "oneToOne",
+      "relation": "oneToMany",
       "target": "api::doctor.doctor",
       "mappedBy": "categories"
     }

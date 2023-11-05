@@ -1,10 +1,10 @@
-import { View, Text } from 'react-native'
 import React from 'react'
 import { createBottomTabNavigator } from '@react-navigation/bottom-tabs'
 import Appointment from '../screens/Appointment'
 import Profile from '../screens/Profile'
 import { AntDesign } from '@expo/vector-icons'
 import HomeNavigation from './HomeNavigation'
+import Explore from '../screens/Explore'
 
 const Tab = createBottomTabNavigator()
 
@@ -17,6 +17,15 @@ export default function TabNavigation() {
 				options={{
 					tabBarIcon: ({ color, size }) => (
 						<AntDesign name="home" size={size} color={color} />
+					),
+				}}
+			/>
+			<Tab.Screen
+				name="Explore"
+				component={Explore}
+				options={{
+					tabBarIcon: ({ color, size }) => (
+						<AntDesign name="search1" size={size} color={color} />
 					),
 				}}
 			/>

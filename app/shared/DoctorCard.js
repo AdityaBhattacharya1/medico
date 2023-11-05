@@ -1,27 +1,16 @@
-import { View, Text, Image, FlatList } from 'react-native'
+import { View, Text, TouchableOpacity, FlatList } from 'react-native'
 import React from 'react'
 import { Ionicons } from '@expo/vector-icons'
-import { Feather } from '@expo/vector-icons'
 import Colors from './Colors'
 import HorizontalLine from './HorizontalLine'
 
-export default function HospitalCard({ hospital }) {
+export default function DoctorCard({ doctors }) {
 	return (
 		<View
 			style={{
 				marginBottom: 20,
 			}}
 		>
-			{hospital.attributes.Premium && <PremiumCard />}
-			<Image
-				source={{ uri: hospital.attributes.image.data.attributes.url }}
-				style={{
-					width: '100%',
-					height: 140,
-					borderTopLeftRadius: 10,
-					borderTopRightRadius: 10,
-				}}
-			/>
 			<View
 				style={{
 					padding: 10,
@@ -30,16 +19,19 @@ export default function HospitalCard({ hospital }) {
 					borderBottomRightRadius: 10,
 				}}
 			>
+				{doctors.attributes.YearsOfExperience > 10 && (
+					<ProfessionalCard />
+				)}
 				<Text style={{ fontSize: 18, fontFamily: 'Roboto-Medium' }}>
-					{hospital.attributes.Name}
+					{doctors.attributes.Name}
 				</Text>
 				<FlatList
-					data={hospital.attributes.categories.data}
+					data={doctors.attributes.categories.data}
 					horizontal={true}
 					renderItem={({ item }) => (
 						<Text style={{ marginRight: 5, color: Colors.GRAY }}>
 							{item.attributes.Name}{' '}
-							{hospital.attributes.categories.data.length > 1
+							{doctors.attributes.categories.data.length > 1
 								? '|'
 								: ''}
 						</Text>
@@ -59,42 +51,58 @@ export default function HospitalCard({ hospital }) {
 						size={18}
 						color={Colors.PRIMARY}
 					/>
-					<Text>{hospital.attributes.Address}</Text>
+					<Text>{doctors.attributes.Address}</Text>
 				</View>
 				<View
 					style={{
-						display: 'flex',
-						flexDirection: 'row',
-						gap: 5,
-						alignItems: 'center',
 						marginTop: 5,
 					}}
 				>
-					<Feather name="eye" size={18} color={Colors.PRIMARY} />
-					<Text>658 Views</Text>
+					<Text style={{ color: Colors.PRIMARY }}>
+						{doctors.attributes.YearsOfExperience} years of
+						experience
+					</Text>
+					<Text style={{ color: Colors.PRIMARY }}>
+						{doctors.attributes.Patients} patients
+					</Text>
 				</View>
+				<TouchableOpacity
+					style={{
+						marginTop: 10,
+						padding: 10,
+						backgroundColor: Colors.SECONDARY,
+						borderRadius: 10,
+					}}
+				>
+					<Text
+						style={{
+							color: Colors.PRIMARY,
+							textAlign: 'center',
+							fontFamily: 'Roboto-Regular',
+						}}
+					>
+						Make an appointment
+					</Text>
+				</TouchableOpacity>
 			</View>
 		</View>
 	)
 }
 
-function PremiumCard() {
+function ProfessionalCard() {
 	return (
 		<View
 			style={{
 				marginTop: 10,
 				marginBottom: 10,
-				marginLeft: 10,
 				padding: 5,
-				width: '30%',
+				width: '57%',
 				backgroundColor: Colors.SECONDARY,
 				borderRadius: 10,
 				display: 'flex',
 				flexDirection: 'row',
 				gap: 7,
 				alignItems: 'center',
-				position: 'absolute',
-				zIndex: 10,
 			}}
 		>
 			<Ionicons
@@ -109,7 +117,7 @@ function PremiumCard() {
 					fontSize: 15,
 				}}
 			>
-				Premium
+				Professional Doctor
 			</Text>
 		</View>
 	)

@@ -54,6 +54,12 @@
     "Premium": {
       "type": "boolean",
       "required": true
+    },
+    "appointment": {
+      "type": "relation",
+      "relation": "oneToOne",
+      "target": "api::appointment.appointment",
+      "mappedBy": "hospitals"
     }
   }
 }

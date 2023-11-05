@@ -1,21 +1,18 @@
-import { View, Text, ActivityIndicator } from 'react-native'
+import { Text, ActivityIndicator, ScrollView } from 'react-native'
 import React, { useEffect, useState } from 'react'
-import { useRoute } from '@react-navigation/native'
-import PageHeader from '../shared/PageHeader.js'
-import HospitalDoctorsTab from '../components/hospitalDoctors/HospitalDoctorsTab.js'
-import HospitalList from '../components/hospitalDoctors/HospitalList.js'
-import globalAPI from '../services/globalAPI.js'
-import Colors from '../shared/Colors.js'
-import DoctorsList from '../components/hospitalDoctors/DoctorsList.js'
+import HospitalDoctorsTab from '../components/hospitalDoctors/HospitalDoctorsTab'
+import Colors from '../shared/Colors'
+import globalAPI from '../services/globalAPI'
+import HospitalList from '../components/hospitalDoctors/HospitalList'
+import DoctorsList from '../components/hospitalDoctors/DoctorsList'
 
-export default function HospitalDoctorsList() {
-	const param = useRoute().params
+export default function Explore() {
+	const [activeTab, setActiveTab] = useState()
 	const [hospitalListing, setHospitalListing] = useState()
 	const [doctorsListing, setDoctorsListing] = useState()
-	const [activeTab, setActiveTab] = useState('Hospital')
 	const getHospitalsByCategory = () =>
 		globalAPI
-			.getHospitalsByCategory(param?.categoryName)
+			.getAllHospitals()
 			.then((res) => setHospitalListing(res.data.data))
 			.catch((e) => {
 				console.error(e.message)
@@ -23,7 +20,7 @@ export default function HospitalDoctorsList() {
 			})
 	const getDoctorsByCategory = () =>
 		globalAPI
-			.getDoctorsByCategory(param?.categoryName)
+			.getAllDoctors()
 			.then((res) => setDoctorsListing(res.data.data))
 			.catch((e) => {
 				console.error(e.message)
@@ -34,8 +31,16 @@ export default function HospitalDoctorsList() {
 		getDoctorsByCategory()
 	}, [])
 	return (
-		<View style={{ padding: 20, marginTop: 15 }}>
-			<PageHeader title={param?.categoryName} />
+		<ScrollView style={{ padding: 25 }}>
+			<Text
+				style={{
+					fontSize: 26,
+					fontFamily: 'Roboto-Medium',
+					marginTop: 25,
+				}}
+			>
+				Explore
+			</Text>
 			<HospitalDoctorsTab setActiveTab={(value) => setActiveTab(value)} />
 			{!hospitalListing?.length ? (
 				<ActivityIndicator
@@ -48,6 +53,6 @@ export default function HospitalDoctorsList() {
 			) : (
 				<DoctorsList doctorList={doctorsListing} />
 			)}
-		</View>
+		</ScrollView>
 	)
 }

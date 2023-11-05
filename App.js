@@ -5,6 +5,7 @@ import * as SecureStore from 'expo-secure-store'
 import { NavigationContainer } from '@react-navigation/native'
 import TabNavigation from './app/navigations/TabNavigation'
 import { useFonts } from 'expo-font'
+import { ToastProvider } from 'react-native-toast-notifications'
 
 const tokenCache = {
 	async getToken(key) {
@@ -34,21 +35,23 @@ export default function App() {
 	if (!fontsLoaded) return null
 
 	return (
-		<ClerkProvider
-			tokenCache={tokenCache}
-			publishableKey="pk_test_ZXhvdGljLWd1cHB5LTI5LmNsZXJrLmFjY291bnRzLmRldiQ"
-		>
-			<SafeAreaView style={styles.container}>
-				<SignedIn>
-					<NavigationContainer>
-						<TabNavigation />
-					</NavigationContainer>
-				</SignedIn>
-				<SignedOut>
-					<Login />
-				</SignedOut>
-			</SafeAreaView>
-		</ClerkProvider>
+		<ToastProvider>
+			<ClerkProvider
+				tokenCache={tokenCache}
+				publishableKey="pk_test_ZXhvdGljLWd1cHB5LTI5LmNsZXJrLmFjY291bnRzLmRldiQ"
+			>
+				<SafeAreaView style={styles.container}>
+					<SignedIn>
+						<NavigationContainer>
+							<TabNavigation />
+						</NavigationContainer>
+					</SignedIn>
+					<SignedOut>
+						<Login />
+					</SignedOut>
+				</SafeAreaView>
+			</ClerkProvider>
+		</ToastProvider>
 	)
 }
 

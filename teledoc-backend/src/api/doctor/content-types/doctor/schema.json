@@ -4,7 +4,8 @@
   "info": {
     "singularName": "doctor",
     "pluralName": "doctors",
-    "displayName": "Doctor"
+    "displayName": "Doctor",
+    "description": ""
   },
   "options": {
     "draftAndPublish": true
@@ -36,9 +37,9 @@
     },
     "categories": {
       "type": "relation",
-      "relation": "oneToOne",
+      "relation": "manyToOne",
       "target": "api::category.category",
-      "inversedBy": "doctor"
+      "inversedBy": "doctors"
     }
   }
 }
