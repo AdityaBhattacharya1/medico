@@ -699,6 +699,7 @@ export interface ApiAppointmentAppointment extends Schema.CollectionType {
       'api::hospital.hospital'
     >;
     Note: Attribute.RichText;
+    DateTimeUID: Attribute.String & Attribute.Required & Attribute.Unique;
     createdAt: Attribute.DateTime;
     updatedAt: Attribute.DateTime;
     publishedAt: Attribute.DateTime;

@@ -71,6 +71,8 @@ export default function BookAppointmentSection({ hospital }) {
 				Time: selectedTime,
 				hospitals: hospital.id,
 				Note: note,
+				DateTimeUID:
+					moment(selectedDate).format('MMMMDoYYYY') + selectedTime,
 			},
 		}
 		globalAPI
@@ -84,8 +86,12 @@ export default function BookAppointmentSection({ hospital }) {
 				setTimeout(() => navigation.goBack(), 2000)
 			})
 			.catch((e) => {
-				console.error(e.message)
-				return e
+				toast.show('Appointment already exists!', {
+					type: 'danger',
+					placement: 'bottom',
+					duration: 2000,
+				})
+				setTimeout(() => navigation.goBack(), 2000)
 			})
 	}
 

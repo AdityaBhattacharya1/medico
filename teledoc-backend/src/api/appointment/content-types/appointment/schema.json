@@ -35,6 +35,11 @@
     },
     "Note": {
       "type": "richtext"
+    },
+    "DateTimeUID": {
+      "type": "string",
+      "required": true,
+      "unique": true
     }
   }
 }

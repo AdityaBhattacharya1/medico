@@ -75,7 +75,7 @@ export default function HospitalInfo({ hospital }) {
 					</Text>
 				</View>
 				<HorizontalLine />
-				<ActionButton />
+				<ActionButton hospital={hospital} />
 				<HorizontalLine />
 				<SubHeading subHeadingTitle={'About'} seeAll={false} />
 				<Text>{hospital.attributes.Description}</Text>
