@@ -24,13 +24,19 @@ const getHospitalsByCategory = (category) =>
 		`/hospitals?filters[categories][Name][$in]=${category}&populate=*`
 	)
 
-const getAllHospitals = () => axiosInstance.get('/hospitals?populate=*')
+const getAllHospitals = (searchText = '') =>
+	axiosInstance.get(
+		`/hospitals?populate=*&filters[Name][$containsi]=${searchText}`
+	)
 
 const getDoctorsByCategory = (category) =>
 	axiosInstance.get(
-		`/doctors?filters[categories][Name][$in]=${category}&populate=*`
+		`/doctors?filters[categories][Name][$in]=${category}&populate=deep`
 	)
-const getAllDoctors = () => axiosInstance.get('/doctors?populate=deep')
+const getAllDoctors = (searchText) =>
+	axiosInstance.get(
+		`/doctors?filters[Name][$containsi]=${searchText}&populate=deep`
+	)
 
 const createAppointment = (data) => axiosInstance.post('/appointments', data)
 

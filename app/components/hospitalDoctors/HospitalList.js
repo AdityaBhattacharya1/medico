@@ -7,20 +7,24 @@ export default function HospitalList({ hospitalList }) {
 	const navigation = useNavigation()
 	return (
 		<View style={{ marginTop: 15 }}>
-			<FlatList
-				data={hospitalList}
-				renderItem={({ item, index }) => (
-					<TouchableOpacity
-						onPress={() =>
-							navigation.navigate('Hospital_Detail', {
-								hospital: item,
-							})
-						}
-					>
-						<HospitalCard hospital={item} />
-					</TouchableOpacity>
-				)}
-			/>
+			{hospitalList.length === 0 ? (
+				<Text>not found</Text>
+			) : (
+				<FlatList
+					data={hospitalList}
+					renderItem={({ item, index }) => (
+						<TouchableOpacity
+							onPress={() =>
+								navigation.navigate('Hospital_Detail', {
+									hospital: item,
+								})
+							}
+						>
+							<HospitalCard hospital={item} />
+						</TouchableOpacity>
+					)}
+				/>
+			)}
 		</View>
 	)
 }

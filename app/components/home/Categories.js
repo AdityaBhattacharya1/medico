@@ -1,4 +1,11 @@
-import { View, Text, Image, FlatList, TouchableOpacity } from 'react-native'
+import {
+	View,
+	Text,
+	Image,
+	FlatList,
+	TouchableOpacity,
+	LogBox,
+} from 'react-native'
 import React, { useEffect, useState } from 'react'
 import globalAPI from '../../services/globalAPI'
 import Colors from '../../shared/Colors'
@@ -7,6 +14,9 @@ import { useNavigation } from '@react-navigation/native'
 
 export default function Categories() {
 	const [categoryList, setCategoryList] = useState([])
+	useEffect(() => {
+		LogBox.ignoreLogs(['VirtualizedLists should never be nested'])
+	}, [])
 	const navigation = useNavigation()
 	const getCategories = () =>
 		globalAPI

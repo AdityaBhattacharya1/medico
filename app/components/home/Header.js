@@ -34,7 +34,6 @@ export default function Header() {
 					</Text>
 				</View>
 			</View>
-			<Ionicons name="notifications-outline" size={28} color="black" />
 		</View>
 	)
 }

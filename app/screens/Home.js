@@ -9,14 +9,14 @@ import PremiumHospitals from '../components/home/PremiumHospitals'
 import { LogBox } from 'react-native'
 
 export default function Home() {
-	const [searchText, setSearchText] = useState('')
+	// const [searchText, setSearchText] = useState('')
 	useEffect(() => {
 		LogBox.ignoreLogs(['VirtualizedLists should never be nested'])
 	}, [])
 	return (
 		<ScrollView style={{ padding: 20, marginTop: 20 }}>
 			<Header />
-			<SearchBar setSearchText={setSearchText} />
+			{/* <SearchBar setSearchText={setSearchText} /> */}
 			<Slider />
 			<Categories />
 			<PremiumHospitals />
