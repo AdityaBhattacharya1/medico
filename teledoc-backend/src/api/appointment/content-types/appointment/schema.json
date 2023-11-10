@@ -4,7 +4,8 @@
   "info": {
     "singularName": "appointment",
     "pluralName": "appointments",
-    "displayName": "Appointment"
+    "displayName": "Appointment",
+    "description": ""
   },
   "options": {
     "draftAndPublish": true
@@ -28,9 +29,9 @@
     },
     "hospitals": {
       "type": "relation",
-      "relation": "oneToOne",
+      "relation": "manyToOne",
       "target": "api::hospital.hospital",
-      "inversedBy": "appointment"
+      "inversedBy": "appointments"
     },
     "Note": {
       "type": "richtext"

@@ -7,7 +7,7 @@ import HospitalList from '../components/hospitalDoctors/HospitalList'
 import DoctorsList from '../components/hospitalDoctors/DoctorsList'
 
 export default function Explore() {
-	const [activeTab, setActiveTab] = useState()
+	const [activeTab, setActiveTab] = useState('Hospital')
 	const [hospitalListing, setHospitalListing] = useState()
 	const [doctorsListing, setDoctorsListing] = useState()
 	const getHospitalsByCategory = () =>

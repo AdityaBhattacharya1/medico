@@ -1,11 +1,4 @@
-import {
-	View,
-	Text,
-	Image,
-	StyleSheet,
-	Dimensions,
-	TouchableOpacity,
-} from 'react-native'
+import { View, Text, Image, StyleSheet } from 'react-native'
 import React from 'react'
 import Colors from '../shared/Colors'
 import SignInWithOAuth from '../components/SignInWithOAuth'

@@ -683,6 +683,7 @@ export interface ApiAppointmentAppointment extends Schema.CollectionType {
     singularName: 'appointment';
     pluralName: 'appointments';
     displayName: 'Appointment';
+    description: '';
   };
   options: {
     draftAndPublish: true;
@@ -694,7 +695,7 @@ export interface ApiAppointmentAppointment extends Schema.CollectionType {
     Time: Attribute.String & Attribute.Required;
     hospitals: Attribute.Relation<
       'api::appointment.appointment',
-      'oneToOne',
+      'manyToOne',
       'api::hospital.hospital'
     >;
     Note: Attribute.RichText;
@@ -824,9 +825,9 @@ export interface ApiHospitalHospital extends Schema.CollectionType {
     >;
     Description: Attribute.RichText;
     Premium: Attribute.Boolean & Attribute.Required;
-    appointment: Attribute.Relation<
+    appointments: Attribute.Relation<
       'api::hospital.hospital',
-      'oneToOne',
+      'oneToMany',
       'api::appointment.appointment'
     >;
     createdAt: Attribute.DateTime;

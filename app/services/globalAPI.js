@@ -1,9 +1,7 @@
 import axios from 'axios'
 
-const BASE_URL =
-	'https://2708-2402-3a80-6b1-a186-6e89-321e-1cd0-1b0d.ngrok.io/api'
-const API_KEY =
-	'7f961b76cbddff9394f599c3f91e27c3db966c0c8ee0aea8539f4bced663cf0d22a5c99061d92ca45987a0560f91d571aa5f4365a2743de78c46a52310cb08222bd885239a13707fa377e139d3bfccedbaaa16cb295b8f08ea76552664c8d4d7168e7895ef134d82e684074ec5742666d5fa4a1b681051f81befcb9a65a21dc9'
+const BASE_URL = `${process.env.EXPO_PUBLIC_API_URL}/api`
+const API_KEY = process.env.EXPO_PUBLIC_API_KEY
 
 const axiosInstance = axios.create({
 	baseURL: BASE_URL,
@@ -36,6 +34,9 @@ const getAllDoctors = () => axiosInstance.get('/doctors?populate=*')
 
 const createAppointment = (data) => axiosInstance.post('/appointments', data)
 
+const getUserAppointments = (email) =>
+	axiosInstance.get(`/appointments?filters[Email][$eq]=${email}&populate=*`)
+
 export default {
 	getSlider,
 	getCategories,
@@ -45,4 +46,5 @@ export default {
 	getDoctorsByCategory,
 	getAllDoctors,
 	createAppointment,
+	getUserAppointments,
 }

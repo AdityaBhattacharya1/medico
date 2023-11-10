@@ -3,7 +3,7 @@ import React from 'react'
 import { Ionicons } from '@expo/vector-icons'
 import { useNavigation } from '@react-navigation/native'
 
-export default function PageHeader({ title }) {
+export default function PageHeader({ title, backButton = true }) {
 	const navigation = useNavigation()
 	return (
 		<View
@@ -15,9 +15,11 @@ export default function PageHeader({ title }) {
 				marginTop: 25,
 			}}
 		>
-			<TouchableOpacity onPress={() => navigation.goBack()}>
-				<Ionicons name="chevron-back" size={30} color="black" />
-			</TouchableOpacity>
+			{backButton && (
+				<TouchableOpacity onPress={() => navigation.goBack()}>
+					<Ionicons name="chevron-back" size={30} color="black" />
+				</TouchableOpacity>
+			)}
 			<Text style={{ fontSize: 25, fontFamily: 'Roboto-Medium' }}>
 				{title}
 			</Text>
