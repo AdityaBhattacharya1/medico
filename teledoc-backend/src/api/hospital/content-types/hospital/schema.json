@@ -60,6 +60,12 @@
       "relation": "oneToMany",
       "target": "api::appointment.appointment",
       "mappedBy": "hospitals"
+    },
+    "doctors": {
+      "type": "relation",
+      "relation": "oneToMany",
+      "target": "api::doctor.doctor",
+      "mappedBy": "hospital"
     }
   }
 }

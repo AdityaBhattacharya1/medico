@@ -783,6 +783,11 @@ export interface ApiDoctorDoctor extends Schema.CollectionType {
       'manyToOne',
       'api::category.category'
     >;
+    hospital: Attribute.Relation<
+      'api::doctor.doctor',
+      'manyToOne',
+      'api::hospital.hospital'
+    >;
     createdAt: Attribute.DateTime;
     updatedAt: Attribute.DateTime;
     publishedAt: Attribute.DateTime;
@@ -830,6 +835,11 @@ export interface ApiHospitalHospital extends Schema.CollectionType {
       'api::hospital.hospital',
       'oneToMany',
       'api::appointment.appointment'
+    >;
+    doctors: Attribute.Relation<
+      'api::hospital.hospital',
+      'oneToMany',
+      'api::doctor.doctor'
     >;
     createdAt: Attribute.DateTime;
     updatedAt: Attribute.DateTime;

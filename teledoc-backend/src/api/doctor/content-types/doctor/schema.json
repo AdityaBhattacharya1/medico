@@ -40,6 +40,12 @@
       "relation": "manyToOne",
       "target": "api::category.category",
       "inversedBy": "doctors"
+    },
+    "hospital": {
+      "type": "relation",
+      "relation": "manyToOne",
+      "target": "api::hospital.hospital",
+      "inversedBy": "doctors"
     }
   }
 }

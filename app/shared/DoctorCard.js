@@ -3,8 +3,12 @@ import React from 'react'
 import { Ionicons } from '@expo/vector-icons'
 import Colors from './Colors'
 import HorizontalLine from './HorizontalLine'
+import { useNavigation } from '@react-navigation/native'
 
 export default function DoctorCard({ doctors }) {
+	const navigation = useNavigation()
+	console.log(doctors.attributes.hospital.data)
+
 	return (
 		<View
 			style={{
@@ -59,7 +63,7 @@ export default function DoctorCard({ doctors }) {
 					}}
 				>
 					<Text style={{ color: Colors.PRIMARY }}>
-						{doctors.attributes.YearsOfExperience} years of
+						{doctors.attributes.YearsOfExperience}+ years of
 						experience
 					</Text>
 					<Text style={{ color: Colors.PRIMARY }}>
@@ -73,6 +77,11 @@ export default function DoctorCard({ doctors }) {
 						backgroundColor: Colors.SECONDARY,
 						borderRadius: 10,
 					}}
+					onPress={() =>
+						navigation.navigate('Book_Appointment', {
+							hospital: doctors.attributes.hospital.data,
+						})
+					}
 				>
 					<Text
 						style={{

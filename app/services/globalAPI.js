@@ -30,7 +30,7 @@ const getDoctorsByCategory = (category) =>
 	axiosInstance.get(
 		`/doctors?filters[categories][Name][$in]=${category}&populate=*`
 	)
-const getAllDoctors = () => axiosInstance.get('/doctors?populate=*')
+const getAllDoctors = () => axiosInstance.get('/doctors?populate=deep')
 
 const createAppointment = (data) => axiosInstance.post('/appointments', data)
 

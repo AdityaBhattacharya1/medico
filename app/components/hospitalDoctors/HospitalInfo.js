@@ -71,7 +71,7 @@ export default function HospitalInfo({ hospital }) {
 							color: Colors.GRAY,
 						}}
 					>
-						Mon Sun | 11AM-8PM
+						Mon - Sun | 11AM - 8PM
 					</Text>
 				</View>
 				<HorizontalLine />

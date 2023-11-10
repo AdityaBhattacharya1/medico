@@ -1,6 +1,5 @@
-import { View, Text, TouchableOpacity, FlatList } from 'react-native'
+import { View, FlatList } from 'react-native'
 import React from 'react'
-import HospitalCard from '../../shared/HospitalCard'
 import DoctorCard from '../../shared/DoctorCard'
 
 export default function DoctorsList({ doctorList }) {
@@ -8,11 +7,7 @@ export default function DoctorsList({ doctorList }) {
 		<View style={{ marginTop: 15 }}>
 			<FlatList
 				data={doctorList}
-				renderItem={({ item, index }) => (
-					// <TouchableOpacity>
-					<DoctorCard doctors={item} />
-					// </TouchableOpacity>
-				)}
+				renderItem={({ item, index }) => <DoctorCard doctors={item} />}
 			/>
 		</View>
 	)
