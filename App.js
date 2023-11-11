@@ -38,7 +38,7 @@ export default function App() {
 		<ToastProvider>
 			<ClerkProvider
 				tokenCache={tokenCache}
-				publishableKey="pk_test_ZXhvdGljLWd1cHB5LTI5LmNsZXJrLmFjY291bnRzLmRldiQ"
+				publishableKey={process.env.EXPO_PUBLIC_CLERK_KEY}
 			>
 				<SafeAreaView style={styles.container}>
 					<SignedIn>

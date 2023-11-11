@@ -9,7 +9,7 @@ import BookAppointmentSection from '../components/bookAppointment/BookAppointmen
 export default function BookAppointment() {
 	const params = useRoute().params
 	return (
-		<ScrollView style={{ padding: 20 }}>
+		<ScrollView style={{ padding: 20, flex: 1 }}>
 			<AppointmentHospitalInfo hospital={params.hospital} />
 			<ActionButton />
 			<HorizontalLine />

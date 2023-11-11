@@ -27,17 +27,14 @@
       "type": "string"
     },
     "StartTime": {
-      "type": "datetime"
+      "type": "time"
     },
     "EndTime": {
-      "type": "datetime"
-    },
-    "About": {
-      "type": "richtext"
+      "type": "time"
     },
     "categories": {
       "type": "relation",
-      "relation": "manyToOne",
+      "relation": "manyToMany",
       "target": "api::category.category",
       "inversedBy": "doctors"
     },
@@ -46,6 +43,17 @@
       "relation": "manyToOne",
       "target": "api::hospital.hospital",
       "inversedBy": "doctors"
+    },
+    "profileImage": {
+      "type": "media",
+      "multiple": false,
+      "required": false,
+      "allowedTypes": [
+        "images",
+        "files",
+        "videos",
+        "audios"
+      ]
     }
   }
 }

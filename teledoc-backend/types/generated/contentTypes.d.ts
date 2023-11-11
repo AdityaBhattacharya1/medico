@@ -738,7 +738,7 @@ export interface ApiCategoryCategory extends Schema.CollectionType {
     >;
     doctors: Attribute.Relation<
       'api::category.category',
-      'oneToMany',
+      'manyToMany',
       'api::doctor.doctor'
     >;
     createdAt: Attribute.DateTime;
@@ -775,12 +775,11 @@ export interface ApiDoctorDoctor extends Schema.CollectionType {
     Address: Attribute.String & Attribute.Required;
     Patients: Attribute.String;
     YearsOfExperience: Attribute.String;
-    StartTime: Attribute.DateTime;
-    EndTime: Attribute.DateTime;
-    About: Attribute.RichText;
+    StartTime: Attribute.Time;
+    EndTime: Attribute.Time;
     categories: Attribute.Relation<
       'api::doctor.doctor',
-      'manyToOne',
+      'manyToMany',
       'api::category.category'
     >;
     hospital: Attribute.Relation<
@@ -788,6 +787,7 @@ export interface ApiDoctorDoctor extends Schema.CollectionType {
       'manyToOne',
       'api::hospital.hospital'
     >;
+    profileImage: Attribute.Media;
     createdAt: Attribute.DateTime;
     updatedAt: Attribute.DateTime;
     publishedAt: Attribute.DateTime;

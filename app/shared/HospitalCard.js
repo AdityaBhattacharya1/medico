@@ -61,18 +61,6 @@ export default function HospitalCard({ hospital }) {
 					/>
 					<Text>{hospital.attributes.Address}</Text>
 				</View>
-				<View
-					style={{
-						display: 'flex',
-						flexDirection: 'row',
-						gap: 5,
-						alignItems: 'center',
-						marginTop: 5,
-					}}
-				>
-					<Feather name="eye" size={18} color={Colors.PRIMARY} />
-					<Text>658 Views</Text>
-				</View>
 			</View>
 		</View>
 	)

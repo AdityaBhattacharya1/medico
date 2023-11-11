@@ -18,7 +18,7 @@ export default function Appointment() {
 		user.firstName && getUserAppointments()
 	}, [user])
 	return (
-		<ScrollView style={{ padding: 20 }}>
+		<ScrollView style={{ padding: 20, flex: 1 }}>
 			<PageHeader title={'My Appointments'} backButton={false} />
 			<FlatList
 				data={appointmentList}

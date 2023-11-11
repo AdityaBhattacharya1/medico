@@ -1,4 +1,4 @@
-import { View, ActivityIndicator } from 'react-native'
+import { ActivityIndicator, ScrollView } from 'react-native'
 import React, { useEffect, useState } from 'react'
 import { useRoute } from '@react-navigation/native'
 import PageHeader from '../shared/PageHeader.js'
@@ -34,7 +34,9 @@ export default function HospitalDoctorsList() {
 		getDoctorsByCategory()
 	}, [])
 	return (
-		<View style={{ padding: 20, marginTop: 15 }}>
+		<ScrollView
+			style={{ paddingLeft: 20, paddingRight: 20, marginTop: 15 }}
+		>
 			<PageHeader title={param?.categoryName} />
 			<HospitalDoctorsTab setActiveTab={(value) => setActiveTab(value)} />
 			{!hospitalListing?.length ? (
@@ -48,6 +50,6 @@ export default function HospitalDoctorsList() {
 			) : (
 				<DoctorsList doctorList={doctorsListing} />
 			)}
-		</View>
+		</ScrollView>
 	)
 }

@@ -34,7 +34,7 @@
     },
     "doctors": {
       "type": "relation",
-      "relation": "oneToMany",
+      "relation": "manyToMany",
       "target": "api::doctor.doctor",
       "mappedBy": "categories"
     }
