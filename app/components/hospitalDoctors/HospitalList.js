@@ -1,14 +1,15 @@
-import { View, Text, TouchableOpacity, FlatList } from 'react-native'
+import { View, TouchableOpacity, FlatList } from 'react-native'
 import React from 'react'
 import HospitalCard from '../../shared/HospitalCard'
 import { useNavigation } from '@react-navigation/native'
+import ErrorText from '../../shared/ErrorText'
 
 export default function HospitalList({ hospitalList }) {
 	const navigation = useNavigation()
 	return (
 		<View style={{ marginTop: 15 }}>
 			{hospitalList?.length === 0 ? (
-				<Text>not found</Text>
+				<ErrorText />
 			) : (
 				<FlatList
 					data={hospitalList}

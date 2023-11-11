@@ -113,6 +113,16 @@ export default function DoctorCard({ doctors }) {
 					<Entypo name="location" size={18} color={Colors.PRIMARY} />
 					<Text>{doctors.attributes.Address}</Text>
 				</View>
+				<HorizontalLine />
+				<Text
+					style={{
+						fontFamily: 'Roboto-Regular',
+						fontSize: 16,
+						color: Colors.GRAY,
+					}}
+				>
+					About The Doctor
+				</Text>
 				<View
 					style={{
 						marginTop: 5,
