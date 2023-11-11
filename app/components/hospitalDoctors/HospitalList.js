@@ -7,7 +7,7 @@ export default function HospitalList({ hospitalList }) {
 	const navigation = useNavigation()
 	return (
 		<View style={{ marginTop: 15 }}>
-			{hospitalList.length === 0 ? (
+			{hospitalList?.length === 0 ? (
 				<Text>not found</Text>
 			) : (
 				<FlatList

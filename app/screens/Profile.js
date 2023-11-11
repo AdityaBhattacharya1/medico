@@ -1,11 +1,13 @@
 import { View, Button } from 'react-native'
 import React from 'react'
-import { SignedOut, useAuth } from '@clerk/clerk-expo'
+import { useAuth } from '@clerk/clerk-expo'
+import Header from '../components/home/Header'
 
 export default function Profile() {
 	return (
-		<View style={{ marginTop: 50 }}>
-			<SignOut />
+		<View style={{ padding: 20, marginTop: 20 }}>
+			<Header />
+			{/* <SignOut /> */}
 		</View>
 	)
 }
