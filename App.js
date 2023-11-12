@@ -1,4 +1,4 @@
-import { StyleSheet, SafeAreaView } from 'react-native'
+import { StyleSheet, SafeAreaView, View } from 'react-native'
 import Login from './app/screens/Login'
 import { ClerkProvider, SignedIn, SignedOut } from '@clerk/clerk-expo'
 import * as SecureStore from 'expo-secure-store'
@@ -40,7 +40,7 @@ export default function App() {
 				tokenCache={tokenCache}
 				publishableKey={process.env.EXPO_PUBLIC_CLERK_KEY}
 			>
-				<SafeAreaView style={styles.container}>
+				<View style={styles.container}>
 					<SignedIn>
 						<NavigationContainer>
 							<TabNavigation />
@@ -49,7 +49,7 @@ export default function App() {
 					<SignedOut>
 						<Login />
 					</SignedOut>
-				</SafeAreaView>
+				</View>
 			</ClerkProvider>
 		</ToastProvider>
 	)
