@@ -4,13 +4,7 @@ import { Entypo, AntDesign, Ionicons } from '@expo/vector-icons'
 import Colors from './Colors'
 import HorizontalLine from './HorizontalLine'
 import { useNavigation } from '@react-navigation/native'
-
-const formatTime = (time) => {
-	let hoursOfTime = time && time.slice(0, 2)
-	hoursOfTime = parseInt(hoursOfTime)
-	let res = `${time} ${hoursOfTime >= 12 ? 'PM' : 'AM'}`
-	return res
-}
+import { formatTime } from '../services/formatTime'
 
 export default function DoctorCard({ doctors }) {
 	const navigation = useNavigation()
@@ -18,8 +12,8 @@ export default function DoctorCard({ doctors }) {
 	let endTime = doctors.attributes.EndTime
 
 	// date format received: hours:minutes:seconds.milliseconds. we trim of the seconds and milliseconds.
-	startTime = startTime && startTime.substring(0, startTime.length - 7)
-	endTime = endTime && endTime.substring(0, endTime.length - 7)
+	// startTime = startTime && startTime.slice(0, -7)
+	// endTime = endTime && endTime.slice(0, -7)
 
 	return (
 		<View
@@ -99,7 +93,9 @@ export default function DoctorCard({ doctors }) {
 						color={Colors.PRIMARY}
 					/>
 					<Text>
-						Timings: {formatTime(startTime)} - {formatTime(endTime)}
+						{console.log(formatTime(startTime).res)}
+						Timings: {formatTime(startTime).res} -{' '}
+						{formatTime(endTime).res}
 					</Text>
 				</View>
 				<View
@@ -146,6 +142,8 @@ export default function DoctorCard({ doctors }) {
 					onPress={() =>
 						navigation.navigate('Book_Appointment', {
 							hospital: doctors.attributes.hospital.data,
+							startTime: formatTime(startTime).time,
+							endTime: formatTime(endTime).time,
 						})
 					}
 				>

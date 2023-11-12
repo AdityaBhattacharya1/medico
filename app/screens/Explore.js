@@ -44,7 +44,7 @@ export default function Explore() {
 		getDoctorsByCategory()
 	}, [searchText])
 	return (
-		<ScrollView style={{ paddingLeft: 15, paddingRight: 15, flex: 1 }}>
+		<ScrollView style={{ paddingHorizontal: 15, flex: 1 }}>
 			<Text
 				style={{
 					fontSize: 26,

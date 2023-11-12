@@ -34,9 +34,7 @@ export default function HospitalDoctorsList() {
 		getDoctorsByCategory()
 	}, [])
 	return (
-		<ScrollView
-			style={{ paddingLeft: 20, paddingRight: 20, marginTop: 15 }}
-		>
+		<ScrollView style={{ paddingHorizontal: 20, marginTop: 15 }}>
 			<PageHeader title={param?.categoryName} />
 			<HospitalDoctorsTab setActiveTab={(value) => setActiveTab(value)} />
 			{!hospitalListing?.length ? (

@@ -4,6 +4,7 @@ import { useNavigation, useRoute } from '@react-navigation/native'
 import PageHeader from '../shared/PageHeader'
 import HospitalInfo from '../components/hospitalDoctors/HospitalInfo'
 import Colors from '../shared/Colors'
+import { formatTime } from '../services/formatTime'
 
 export default function HospitalDetails() {
 	const [hospital, setHospital] = useState()
@@ -62,6 +63,10 @@ export default function HospitalDetails() {
 					onPress={() =>
 						navigation.navigate('Book_Appointment', {
 							hospital,
+							startTime: formatTime(hospital.attributes.startTime)
+								.time,
+							endTime: formatTime(hospital.attributes.endTime)
+								.time,
 						})
 					}
 				>

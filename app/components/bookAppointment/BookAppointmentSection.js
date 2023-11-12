@@ -15,18 +15,27 @@ import globalAPI from '../../services/globalAPI'
 import { useToast } from 'react-native-toast-notifications'
 import { useNavigation } from '@react-navigation/native'
 
-export default function BookAppointmentSection({ hospital }) {
+export default function BookAppointmentSection({
+	hospital,
+	startTime = 11,
+	endTime = 23,
+}) {
 	const { user } = useUser()
 	const toast = useToast()
 	const navigation = useNavigation()
 
+	console.log(startTime)
+	console.log(endTime)
+
 	const [nextSevenDays, setNextSevenDays] = useState([])
+	const [timingsList, setTimingsList] = useState([])
+
 	const [selectedDate, setSelectedDate] = useState()
 	const [selectedTime, setSelectedTime] = useState()
+
 	const [note, setNote] = useState('')
-	const [timingsList, setTimingsList] = useState([])
+
 	const getDays = () => {
-		const today = moment()
 		const nextDays = []
 		for (let i = 1; i < 8; i++) {
 			let date = moment().add(i, 'days')
@@ -36,29 +45,29 @@ export default function BookAppointmentSection({ hospital }) {
 				formattedDate: date.format('Do MMM'),
 			})
 		}
-
-		// console.log(nextDays)
 		setNextSevenDays(nextDays)
 	}
 
 	const getTime = () => {
 		const timeList = []
-		for (let i = 8; i <= 11; i++) {
-			timeList.push({
-				time: i + ':00 AM',
+
+		// create startTime and endTime intervals
+		const start = new Date()
+		start.setHours(startTime.hoursOfTime, startTime.minutesOfTime, 0)
+		const end = new Date()
+		end.setHours(endTime.hoursOfTime, endTime.minutesOfTime, 0)
+		let resTime
+
+		// generate times between start and end with 30 mins interval
+		while (start <= end) {
+			resTime = start.toLocaleString('en-US', {
+				hour: '2-digit',
+				minute: '2-digit',
 			})
-			timeList.push({
-				time: i + ':30 AM',
-			})
+			timeList.push({ time: resTime })
+			start.setMinutes(start.getMinutes() + 30)
 		}
-		for (let i = 1; i <= 6; i++) {
-			timeList.push({
-				time: i + ':00 PM',
-			})
-			timeList.push({
-				time: i + ':30 PM',
-			})
-		}
+		console.log(timeList)
 		setTimingsList(timeList)
 	}
 

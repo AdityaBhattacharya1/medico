@@ -22,7 +22,10 @@ export default function PremiumHospitals() {
 	return (
 		hospitalList && (
 			<View style={{ marginTop: 10 }}>
-				<SubHeading subHeadingTitle={'Our Premium Hospitals'} />
+				<SubHeading
+					subHeadingTitle={'Our Premium Hospitals'}
+					seeAll={false}
+				/>
 				<FlatList
 					data={hospitalList}
 					showsHorizontalScrollIndicator={false}

@@ -841,6 +841,8 @@ export interface ApiHospitalHospital extends Schema.CollectionType {
       'oneToMany',
       'api::doctor.doctor'
     >;
+    startTime: Attribute.Time;
+    endTime: Attribute.Time;
     createdAt: Attribute.DateTime;
     updatedAt: Attribute.DateTime;
     publishedAt: Attribute.DateTime;

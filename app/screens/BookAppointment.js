@@ -13,7 +13,11 @@ export default function BookAppointment() {
 			<AppointmentHospitalInfo hospital={params.hospital} />
 			<ActionButton />
 			<HorizontalLine />
-			<BookAppointmentSection hospital={params.hospital} />
+			<BookAppointmentSection
+				hospital={params.hospital}
+				startTime={params.startTime}
+				endTime={params.endTime}
+			/>
 		</ScrollView>
 	)
 }

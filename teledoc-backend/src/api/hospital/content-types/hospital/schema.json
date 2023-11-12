@@ -66,6 +66,12 @@
       "relation": "oneToMany",
       "target": "api::doctor.doctor",
       "mappedBy": "hospital"
+    },
+    "startTime": {
+      "type": "time"
+    },
+    "endTime": {
+      "type": "time"
     }
   }
 }

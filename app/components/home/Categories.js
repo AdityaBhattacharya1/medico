@@ -32,49 +32,47 @@ export default function Categories() {
 	return (
 		categoryList && (
 			<View style={{ marginTop: 10 }}>
-				<SubHeading subHeadingTitle={'Doctor Specialties'} />
+				<SubHeading
+					subHeadingTitle={'Doctor Specialties'}
+					seeAll={false}
+				/>
 				<FlatList
 					data={categoryList}
-					numColumns={4}
-					columnWrapperStyle={{
-						flex: 1,
-						justifyContent: 'space-between',
-					}}
-					renderItem={({ item, index }) =>
-						index < 4 && (
-							<TouchableOpacity
-								onPress={() =>
-									navigation.navigate(
-										'Hospital_Doctor_List_Screen',
-										{
-											categoryName: item.attributes.Name,
-										}
-									)
-								}
+					horizontal={true}
+					renderItem={({ item, index }) => (
+						<TouchableOpacity
+							onPress={() =>
+								navigation.navigate(
+									'Hospital_Doctor_List_Screen',
+									{
+										categoryName: item.attributes.Name,
+									}
+								)
+							}
+							style={{
+								alignItems: 'center',
+								marginBottom: 10,
+								marginHorizontal: 5,
+							}}
+						>
+							<View
 								style={{
-									alignItems: 'center',
-									marginBottom: 10,
+									backgroundColor: Colors.SECONDARY,
+									padding: 15,
+									borderRadius: 100,
 								}}
 							>
-								<View
-									style={{
-										backgroundColor: Colors.SECONDARY,
-										padding: 15,
-										borderRadius: 100,
+								<Image
+									source={{
+										uri: item.attributes.Icon.data
+											.attributes.url,
 									}}
-								>
-									<Image
-										source={{
-											uri: item.attributes.Icon.data
-												.attributes.url,
-										}}
-										style={{ width: 30, height: 30 }}
-									/>
-								</View>
-								<Text>{item.attributes.Name}</Text>
-							</TouchableOpacity>
-						)
-					}
+									style={{ width: 30, height: 30 }}
+								/>
+							</View>
+							<Text>{item.attributes.Name}</Text>
+						</TouchableOpacity>
+					)}
 				/>
 			</View>
 		)

@@ -6,6 +6,7 @@ import { AntDesign } from '@expo/vector-icons'
 import ActionButton from './ActionButton'
 import SubHeading from '../home/SubHeading'
 import HorizontalLine from '../../shared/HorizontalLine'
+import { formatTime } from '../../services/formatTime'
 
 export default function HospitalInfo({ hospital }) {
 	return (
@@ -71,7 +72,10 @@ export default function HospitalInfo({ hospital }) {
 							color: Colors.GRAY,
 						}}
 					>
-						Mon - Sun | 11AM - 8PM
+						{console.log(hospital.attributes)}
+						Mon - Sun |{' '}
+						{formatTime(hospital.attributes.startTime).res} -{' '}
+						{formatTime(hospital.attributes.endTime).res}
 					</Text>
 				</View>
 				<HorizontalLine />
