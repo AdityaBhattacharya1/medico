@@ -72,7 +72,6 @@ export default function HospitalInfo({ hospital }) {
 							color: Colors.GRAY,
 						}}
 					>
-						{console.log(hospital.attributes)}
 						Mon - Sun |{' '}
 						{formatTime(hospital.attributes.startTime).res} -{' '}
 						{formatTime(hospital.attributes.endTime).res}

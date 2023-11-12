@@ -13,7 +13,6 @@ export default function HospitalDetails() {
 	useEffect(() => {
 		setHospital(param.hospital)
 	})
-	console.log(hospital)
 
 	return (
 		hospital && (

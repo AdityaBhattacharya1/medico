@@ -93,7 +93,6 @@ export default function DoctorCard({ doctors }) {
 						color={Colors.PRIMARY}
 					/>
 					<Text>
-						{console.log(formatTime(startTime).res)}
 						Timings: {formatTime(startTime).res} -{' '}
 						{formatTime(endTime).res}
 					</Text>

@@ -24,9 +24,6 @@ export default function BookAppointmentSection({
 	const toast = useToast()
 	const navigation = useNavigation()
 
-	console.log(startTime)
-	console.log(endTime)
-
 	const [nextSevenDays, setNextSevenDays] = useState([])
 	const [timingsList, setTimingsList] = useState([])
 
@@ -67,7 +64,6 @@ export default function BookAppointmentSection({
 			timeList.push({ time: resTime })
 			start.setMinutes(start.getMinutes() + 30)
 		}
-		console.log(timeList)
 		setTimingsList(timeList)
 	}
 
