@@ -113,6 +113,7 @@ To run the app locally, follow these steps:
     ```
 
 3.  **Run the app**
+<br />
     Add your Strapi public API key from the admin panel and the NGROK URL into the `.env` file.
 
     ```sh
