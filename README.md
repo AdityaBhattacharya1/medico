@@ -115,17 +115,17 @@ To run the app locally, follow these steps:
 3.  **Run the app**
     Add your Strapi public API key from the admin panel and the NGROK URL into the `.env` file.
 
-    ````sh
+    ```sh
     npm start &
 
-        cd teledoc-backend
-        npm start &
+    cd teledoc-backend
+    npm start &
 
-        npx ngrok http 1337
-        ```
+    npx ngrok http 1337
+    ```    
 
     You should now be able to view the app via Expo Go.
-    ````
+    
 
 ## Screenshots
 
