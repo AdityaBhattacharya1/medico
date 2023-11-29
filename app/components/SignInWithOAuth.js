@@ -37,7 +37,7 @@ const SignInWithOAuth = () => {
 				backgroundColor: Colors.PRIMARY,
 				borderRadius: 90,
 				alignItems: 'center',
-				marginTop: Dimensions.get('screen').height * 0.5,
+				marginTop: Dimensions.get('screen').height * 0.1,
 				width: Dimensions.get('screen').width * 0.8,
 			}}
 		>

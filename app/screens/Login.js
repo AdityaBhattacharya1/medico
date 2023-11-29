@@ -10,14 +10,19 @@ export default function Login() {
 				backgroundColor: Colors.WHITE,
 				padding: 25,
 				alignItems: 'center',
-				marginTop: 50,
+				marginTop: 30,
 			}}
 		>
+			<Image
+				source={require('../../assets/hero-img.jpeg')}
+				style={{ height: 400, width: 400 }}
+			/>
 			<Text style={styles.heading}>Your Ultimate Doctor</Text>
 			<Text style={styles.heading}>Appointment Booking App</Text>
 			<Text style={{ textAlign: 'center', marginTop: 20 }}>
 				Book appointments effortlessly and manage your health journey
 			</Text>
+
 			<SignInWithOAuth />
 		</View>
 	)
@@ -27,5 +32,6 @@ const styles = StyleSheet.create({
 	heading: {
 		fontSize: 25,
 		fontWeight: 'bold',
+		fontFamily: 'Roboto-Medium',
 	},
 })

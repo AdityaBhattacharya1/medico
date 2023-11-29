@@ -11,6 +11,12 @@ export const formatTime = (time) => {
 	let minutesOfTime = time && time.slice(3, 5)
 	hoursOfTime = parseInt(hoursOfTime)
 	minutesOfTime = parseInt(minutesOfTime)
-	let res = `${time.slice(0, -7)} ${hoursOfTime >= 12 ? 'PM' : 'AM'}`
+	let timeStr = new Date()
+	timeStr.setHours(hoursOfTime)
+	timeStr.setMinutes(minutesOfTime)
+	let res = timeStr.toLocaleString('en-US', {
+		hour: '2-digit',
+		minute: '2-digit',
+	})
 	return { res, time: { hoursOfTime, minutesOfTime } }
 }
