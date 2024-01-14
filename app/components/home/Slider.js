@@ -10,7 +10,7 @@ export default function Slider() {
 			.getSlider()
 			.then((res) => setSliderList(res.data.data))
 			.catch((e) => {
-				console.error(e.message)
+				console.error(e.response)
 				return e
 			})
 	}

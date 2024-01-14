@@ -26,8 +26,10 @@ export default function HospitalDetails() {
 					<View>
 						<Image
 							source={{
-								uri: hospital.attributes.image.data.attributes
-									.url,
+								uri:
+									hospital.attributes.image.data?.attributes
+										.url ||
+									'https://res.cloudinary.com/ddxgsn30a/image/upload/v1705268791/thumbnail_switzerland_3_3440_1440_91787abfbf.jpg',
 							}}
 							style={{
 								width: '100%',

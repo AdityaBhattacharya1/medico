@@ -5,6 +5,7 @@ import Colors from './Colors'
 import HorizontalLine from './HorizontalLine'
 
 export default function HospitalCard({ hospital }) {
+	console.log(hospital)
 	return (
 		<View
 			style={{
@@ -13,7 +14,11 @@ export default function HospitalCard({ hospital }) {
 		>
 			{hospital.attributes.Premium && <PremiumCard />}
 			<Image
-				source={{ uri: hospital.attributes.image.data.attributes.url }}
+				source={{
+					uri:
+						hospital.attributes.image.data?.attributes.url ||
+						'https://res.cloudinary.com/ddxgsn30a/image/upload/v1705268791/thumbnail_switzerland_3_3440_1440_91787abfbf.jpg',
+				}}
 				style={{
 					width: '100%',
 					height: 140,

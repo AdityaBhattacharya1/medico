@@ -18,7 +18,7 @@ export default function HospitalDoctorsList() {
 			.getHospitalsByCategory(param?.categoryName)
 			.then((res) => setHospitalListing(res.data.data))
 			.catch((e) => {
-				console.error(e.message)
+				console.error(e.response)
 				return e
 			})
 	const getDoctorsByCategory = () =>
