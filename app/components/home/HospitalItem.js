@@ -1,6 +1,7 @@
 import { View, Image, Text } from 'react-native'
 import React from 'react'
 import Colors from '../../shared/Colors'
+import { DEFAULT_HOSPITAL_IMAGE } from '../../shared/constants'
 
 export default function HospitalItem({ hospital }) {
 	return (
@@ -17,7 +18,7 @@ export default function HospitalItem({ hospital }) {
 				source={{
 					uri:
 						hospital.attributes.image.data?.attributes.url ||
-						'https://res.cloudinary.com/ddxgsn30a/image/upload/v1705268791/thumbnail_switzerland_3_3440_1440_91787abfbf.jpg',
+						DEFAULT_HOSPITAL_IMAGE,
 				}}
 				style={{
 					width: '100%',

@@ -19,9 +19,9 @@ const getCategories = () => axiosInstance.get('/categories?populate=*')
 const getPremiumHospitals = () =>
 	axiosInstance.get('/hospitals?filters[Premium][$eq]=true&populate=*')
 
-const getHospitalsByCategory = (category) =>
+const getHospitalsByCategory = (category, searchText = '') =>
 	axiosInstance.get(
-		`/hospitals?filters[categories][Name][$in]=${category}&populate=*`
+		`/hospitals?filters[categories][Name][$in]=${category}&filters[Name][$containsi]=${searchText}&populate=*`
 	)
 
 const getAllHospitals = (searchText = '') =>
@@ -29,9 +29,9 @@ const getAllHospitals = (searchText = '') =>
 		`/hospitals?populate=*&filters[Name][$containsi]=${searchText}`
 	)
 
-const getDoctorsByCategory = (category) =>
+const getDoctorsByCategory = (category, searchText = '') =>
 	axiosInstance.get(
-		`/doctors?filters[categories][Name][$in]=${category}&populate=deep`
+		`/doctors?filters[categories][Name][$in]=${category}&filters[Name][$containsi]=${searchText}&populate=deep`
 	)
 const getAllDoctors = (searchText) =>
 	axiosInstance.get(

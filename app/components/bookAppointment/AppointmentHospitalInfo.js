@@ -4,6 +4,7 @@ import PageHeader from '../../shared/PageHeader'
 import Colors from '../../shared/Colors'
 import { Ionicons } from '@expo/vector-icons'
 import HorizontalLine from '../../shared/HorizontalLine'
+import { DEFAULT_HOSPITAL_IMAGE } from '../../shared/constants'
 
 export default function AppointmentHospitalInfo({ hospital }) {
 	return (
@@ -22,7 +23,7 @@ export default function AppointmentHospitalInfo({ hospital }) {
 					source={{
 						uri:
 							hospital.attributes.image.data?.attributes.url ||
-							'https://res.cloudinary.com/ddxgsn30a/image/upload/v1705268791/thumbnail_switzerland_3_3440_1440_91787abfbf.jpg',
+							DEFAULT_HOSPITAL_IMAGE,
 					}}
 					style={{ width: 100, height: 100, borderRadius: 100 }}
 				/>

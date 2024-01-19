@@ -5,6 +5,7 @@ import PageHeader from '../shared/PageHeader'
 import HospitalInfo from '../components/hospitalDoctors/HospitalInfo'
 import Colors from '../shared/Colors'
 import { formatTime } from '../services/formatTime'
+import { DEFAULT_HOSPITAL_IMAGE } from '../shared/constants'
 
 export default function HospitalDetails() {
 	const [hospital, setHospital] = useState()
@@ -28,8 +29,7 @@ export default function HospitalDetails() {
 							source={{
 								uri:
 									hospital.attributes.image.data?.attributes
-										.url ||
-									'https://res.cloudinary.com/ddxgsn30a/image/upload/v1705268791/thumbnail_switzerland_3_3440_1440_91787abfbf.jpg',
+										.url || DEFAULT_HOSPITAL_IMAGE,
 							}}
 							style={{
 								width: '100%',

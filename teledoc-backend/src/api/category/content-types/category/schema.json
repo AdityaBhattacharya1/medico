@@ -16,19 +16,14 @@
       "required": true
     },
     "Icon": {
-      "allowedTypes": [
-        "images",
-        "files",
-        "videos",
-        "audios"
-      ],
+      "allowedTypes": ["images", "files", "videos", "audios"],
       "type": "media",
       "multiple": false,
       "required": true
     },
     "hospital": {
       "type": "relation",
-      "relation": "manyToOne",
+      "relation": "manyToMany",
       "target": "api::hospital.hospital",
       "inversedBy": "categories"
     },

@@ -3,9 +3,9 @@ import React from 'react'
 import { Ionicons } from '@expo/vector-icons'
 import Colors from './Colors'
 import HorizontalLine from './HorizontalLine'
+import { DEFAULT_HOSPITAL_IMAGE } from './constants'
 
 export default function HospitalCard({ hospital }) {
-	console.log(hospital)
 	return (
 		<View
 			style={{
@@ -17,7 +17,7 @@ export default function HospitalCard({ hospital }) {
 				source={{
 					uri:
 						hospital.attributes.image.data?.attributes.url ||
-						'https://res.cloudinary.com/ddxgsn30a/image/upload/v1705268791/thumbnail_switzerland_3_3440_1440_91787abfbf.jpg',
+						DEFAULT_HOSPITAL_IMAGE,
 				}}
 				style={{
 					width: '100%',
