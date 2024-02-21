@@ -14,10 +14,10 @@
     "strapi": "strapi"
   },
   "dependencies": {
-    "@strapi/plugin-i18n": "4.14.5",
-    "@strapi/plugin-users-permissions": "4.14.5",
+    "@strapi/plugin-i18n": "4.20.1",
+    "@strapi/plugin-users-permissions": "4.20.1",
     "@strapi/provider-upload-cloudinary": "^4.14.5",
-    "@strapi/strapi": "4.15.4",
+    "@strapi/strapi": "4.20.1",
     "better-sqlite3": "^9.2.2",
     "mysql": "2.18.1",
     "react": "^18.2.0",
