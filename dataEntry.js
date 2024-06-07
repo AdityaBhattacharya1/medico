@@ -3,8 +3,21 @@ const doctorsData = require('./data/doctors.json')
 const hospitalsData = require('./data/hospitals.json')
 const dotenv = require('dotenv').config()
 
-const BASE_URL = `${process.env.EXPO_PUBLIC_API_URL}/api`
-const API_KEY = process.env.EXPO_PUBLIC_API_KEY
+const expoPublicAPIUrl = await fetch(
+	'https://medico-auth-repo.vercel.app/api/hello'
+)
+	.then((res) => res.json())
+	.then((data) => data.expoPublicAPIUrl)
+
+const apiKey = await fetch('https://medico-auth-repo.vercel.app/api/hello')
+	.then((res) => res.json())
+	.then((data) => data.expoPublicAPIKey)
+
+// const BASE_URL = `${process.env.EXPO_PUBLIC_API_URL}/api`
+// const API_KEY = process.env.EXPO_PUBLIC_API_KEY
+
+const BASE_URL = `${expoPublicAPIUrl}/api`
+const API_KEY = apiKey
 
 const axiosInstance = axios.create({
 	baseURL: BASE_URL,

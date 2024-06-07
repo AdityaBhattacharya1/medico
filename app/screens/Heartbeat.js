@@ -9,9 +9,19 @@ import Colors from '../shared/Colors'
 import { useNavigation } from '@react-navigation/native'
 import { AntDesign } from '@expo/vector-icons'
 
+const HEARTBEAT_API_URL = await fetch(
+	'https://medico-auth-repo.vercel.app/api/hello'
+)
+	.then((res) => res.json())
+	.then((data) => data.heartBeatAPIUrl)
+
+const TOKEN_API_URL = await fetch(
+	'https://medico-auth-repo.vercel.app/api/hello'
+)
+	.then((res) => res.json())
+	.then((data) => data.tokenAPIUrl)
+
 const Heartbeat = () => {
-	const HEARTBEAT_API_URL = 'https://shaky-regions-eat.loca.lt'
-	const TOKEN_API_URL = 'https://all-trams-feel.loca.lt'
 	const { user, isLoaded } = useUser()
 	const { getToken } = useAuth()
 
