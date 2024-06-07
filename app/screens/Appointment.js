@@ -36,7 +36,7 @@ export default function Appointment() {
 	}, [user])
 	return (
 		<ScrollView
-			style={{ paddingHorizontal: 20, marginTop: 20, flex: 1 }}
+			style={{ paddingHorizontal: 20, marginTop: 30, flex: 1 }}
 			refreshControl={
 				<RefreshControl
 					refreshing={refreshing}
