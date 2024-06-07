@@ -6,6 +6,7 @@ import { NavigationContainer } from '@react-navigation/native'
 import TabNavigation from './app/navigations/TabNavigation'
 import { useFonts } from 'expo-font'
 import { ToastProvider } from 'react-native-toast-notifications'
+import { ConfigProvider } from './app/shared/ConfigContext'
 
 const tokenCache = {
 	async getToken(key) {
@@ -36,21 +37,23 @@ export default function App() {
 
 	return (
 		<ToastProvider>
-			<ClerkProvider
-				tokenCache={tokenCache}
-				publishableKey={process.env.EXPO_PUBLIC_CLERK_KEY}
-			>
-				<View style={styles.container}>
-					<SignedIn>
-						<NavigationContainer>
-							<TabNavigation />
-						</NavigationContainer>
-					</SignedIn>
-					<SignedOut>
-						<Login />
-					</SignedOut>
-				</View>
-			</ClerkProvider>
+			<ConfigProvider>
+				<ClerkProvider
+					tokenCache={tokenCache}
+					publishableKey={process.env.EXPO_PUBLIC_CLERK_KEY}
+				>
+					<View style={styles.container}>
+						<SignedIn>
+							<NavigationContainer>
+								<TabNavigation />
+							</NavigationContainer>
+						</SignedIn>
+						<SignedOut>
+							<Login />
+						</SignedOut>
+					</View>
+				</ClerkProvider>
+			</ConfigProvider>
 		</ToastProvider>
 	)
 }

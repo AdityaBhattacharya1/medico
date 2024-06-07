@@ -8,27 +8,21 @@ import { scale } from '../../utils/dataMapper'
 import Colors from '../shared/Colors'
 import { useNavigation } from '@react-navigation/native'
 import { AntDesign } from '@expo/vector-icons'
-
-const HEARTBEAT_API_URL = await fetch(
-	'https://medico-auth-repo.vercel.app/api/hello'
-)
-	.then((res) => res.json())
-	.then((data) => data.heartBeatAPIUrl)
-
-const TOKEN_API_URL = await fetch(
-	'https://medico-auth-repo.vercel.app/api/hello'
-)
-	.then((res) => res.json())
-	.then((data) => data.tokenAPIUrl)
+import { useConfig } from '../shared/ConfigContext'
 
 const Heartbeat = () => {
 	const { user, isLoaded } = useUser()
 	const { getToken } = useAuth()
+	const config = useConfig()
+	console.log('cfg', config)
 
 	const [sessionToken, setSessionToken] = useState('')
 	const [data, setData] = useState('')
 	const [dataArr, setDataArr] = useState([])
 	const navigation = useNavigation()
+
+	const HEARTBEAT_API_URL = config.heartBeatAPIUrl
+	const TOKEN_API_URL = config.tokenAPIUrl
 
 	useEffect(() => {
 		const fetchData = async () => {
